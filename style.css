@@ -20,6 +20,16 @@
     --bg-mobile:url(./assets/img/pattern-background-mobile-light.svg);
     --bg-desktop:url(./assets/img/pattern-background-desktop-light.svg);
 }
+body.dark{
+    --bg-mobile:url(./assets/img/pattern-background-mobile-dark.svg);
+    --bg-desktop:url(./assets/img/pattern-background-desktop-dark.svg);
+    --bg-color:#313e51;
+    --primary-text-color:#fff;
+    --button-bg:#3b4b66;
+    --shadow: 0px 16px 40px 0px rgba(49,62,81,0.14);
+    --secodary-text-color:#abc1e1;
+
+}
 body{
     height: 100svh;
     background: var(--bg-mobile) var(--bg-color);
