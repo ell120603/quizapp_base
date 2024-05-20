@@ -142,6 +142,20 @@ main{
         color: var(--white);
     }
 }
+.alternativas label#certo{
+    outline: 3px solid var(--green);
+    & span{
+        background: var(--green);
+        color: var(--white);
+    }
+}
+.alternativas label#errado{
+    outline: 3px solid var(--red);
+    & span{
+        background: var(--red);
+        color: var(--white);
+    }
+}
 .alternativas input{
     display: none;
 }
@@ -174,6 +188,9 @@ main{
     font-weight: 500;
 }
 @media(min-width:1099px){
+    header{
+        margin-block: 81px;
+    }
     .tema{
         gap: 16px;
     }
