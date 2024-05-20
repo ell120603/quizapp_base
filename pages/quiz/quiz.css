@@ -7,6 +7,8 @@
 }
 :root{
     --bg-color:#f4f6fa;
+    --color-span:#626c7f;
+    --bg-color-span:#f4f6fa;
     --purple:#a729f5;
     --purple-hover:rgba(167, 41, 245,0.7);
     --white:#fff;
@@ -27,6 +29,7 @@ body.dark{
     --bg-mobile:url(../../assets/img/pattern-background-mobile-dark.svg);
     --bg-desktop:url(../../assets/img/pattern-background-desktop-dark.svg);
     --bg-color:#313e51;
+    --color-span:#313e51;
     --primary-text-color:#fff;
     --button-bg:#3b4b66;
     --shadow: 0px 16px 40px 0px rgba(49,62,81,0.14);
@@ -176,12 +179,12 @@ main{
     display: block;
     width: 40px;
     height: 40px;
-    background: var(--bg-color);
+    background: var(--bg-color-span);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    color: var(--secodary-text-color);
+    color: var(--color-span);
     flex-shrink: 0  ;
 
 }
