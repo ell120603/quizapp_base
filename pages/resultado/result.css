@@ -14,7 +14,7 @@
     --white:#fff;
     --green:#26d782;
     --red:#ee5454;
-    --button-bg:#fff;
+    --pontuacao-bg:#fff;
     --primary-text-color:#313e51;
     --bg-html:#fff1e9;
     --bg-css:#e0fdef;
@@ -31,7 +31,7 @@ body.dark{
     --bg-color:#313e51;
     --color-span:#313e51;
     --primary-text-color:#fff;
-    --button-bg:#3b4b66;
+    --pontuacao-bg:#3b4b66;
     --shadow: 0px 16px 40px 0px rgba(49,62,81,0.14);
     --secodary-text-color:#abc1e1;
 
@@ -90,6 +90,37 @@ header{
     width: 12px;
     height: 12px;
     border-radius: 999px;
+}
+main{
+    padding: 32px 24px;
+}
+main h2{
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--primary-text-color);
+    margin-bottom: 40px;
+}
+main h2 strong{
+    font-weight: 500;
+}
+.pontuacao{
+    background: var(--pontuacao-bg);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+.pontuacao strong{
+    font-size: 88px;
+    color: var(--primary-text-color);
+    font-weight: 500;
+}
+.pontuacao p{
+    color: var(--secodary-text-color);
+    font-size: 18px;
 }
 @media(min-width:1099px){
     body{
