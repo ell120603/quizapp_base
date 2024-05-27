@@ -110,6 +110,7 @@ main h2 strong{
     gap: 16px;
     border-radius: 12px;
     margin-bottom: 12px;
+    box-shadow: var(--shadow);
 }
 .pontuacao strong{
     font-size: 88px;
@@ -129,6 +130,7 @@ main button{
     width: 100%;
     font-size: 18px;
     font-weight: 500;
+    box-shadow: var(--shadow);
 }
 main button:hover{
     background: var(--purple-hover);
