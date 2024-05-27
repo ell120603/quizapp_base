@@ -12,8 +12,6 @@
     --purple:#a729f5;
     --purple-hover:rgba(167, 41, 245,0.7);
     --white:#fff;
-    --green:#26d782;
-    --red:#ee5454;
     --pontuacao-bg:#fff;
     --primary-text-color:#313e51;
     --bg-html:#fff1e9;
@@ -121,6 +119,21 @@ main h2 strong{
 .pontuacao p{
     color: var(--secodary-text-color);
     font-size: 18px;
+}
+main button{
+    padding: 16px;
+    border-radius: 12px;
+    border: none;
+    background: var(--purple);
+    color: var(--white);
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+}
+main button:hover{
+    background: var(--purple-hover);
+    cursor: pointer;
+    transition: background 0.3s;
 }
 @media(min-width:1099px){
     body{
