@@ -115,6 +115,7 @@ main{
     font-size: 18px;
     font-weight: 500;
     color: var(--primary-text-color);
+    cursor: pointer;
 }
 .btn1 div{
     background:var(--bg-html);
