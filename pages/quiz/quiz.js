@@ -6,7 +6,8 @@ const assunto = localStorage.getItem("assunto");
 let quiz = {};
 let pontos = 0;
 let pergunta = 1;
-
+let resposta = ""
+let idInputResposta = ""
 buttonTema.addEventListener("click", () => {
   trocarTema(body, buttonTema);
 });
@@ -55,28 +56,28 @@ function montarPergunta() {
         <section class="alternativas">
             <form action="">
                 <label for="alternativa_A">
-                    <input type="radio" id="alternativa_A" name="alternativa">
+                    <input type="radio" id="alternativa_A" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[0])}">
                     <div>
                         <span>A</span>
                         ${alterarSinais(quiz.questions[pergunta-1].options[0])}
                     </div>
                 </label>
                 <label for="alternativa_B">
-                    <input type="radio" id="alternativa_B" name="alternativa">
+                    <input type="radio" id="alternativa_B" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[1])}">
                     <div>
                         <span>B</span>
                         ${alterarSinais(quiz.questions[pergunta-1].options[1])}
                     </div>
                 </label>
                 <label for="alternativa_C" >
-                    <input type="radio" id="alternativa_C" name="alternativa">
+                    <input type="radio" id="alternativa_C" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[2])}">
                     <div>
                         <span>C</span>
                         ${alterarSinais(quiz.questions[pergunta-1].options[2])}
                     </div>
                 </label>
                 <label for="alternativa_D">
-                    <input type="radio" id="alternativa_D" name="alternativa">
+                    <input type="radio" id="alternativa_D" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[3])}">
                     <div>
                         <span>D</span>
                         ${alterarSinais(quiz.questions[pergunta-1].options[3])}
@@ -89,9 +90,19 @@ function montarPergunta() {
 function alterarSinais(texto){
     return texto.replace(/</g, "&lt;").replace(/>/g, "&gt;")
 }
+function guardarResposta(evento){
+    resposta = evento.target.value
+    idInputResposta = evento.target.id
+}
 async function iniciar(){
     alterarAssunto()
     await buscarPerguntas()
     montarPergunta()
+
+    const inputsResposta = document.querySelectorAll(".alternativas input")
+    inputsResposta.forEach(input=>{
+        input.addEventListener("click",guardarResposta)
+    })
 }
+
 iniciar()
