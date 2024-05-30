@@ -81,7 +81,7 @@ header{
     font-weight: 500;
     color: var(--primary-text-color);
 }
-.assunto_icon img{
+.assunto_icone img{
     width: 100%;
 }
 .tema{
@@ -128,16 +128,15 @@ main{
     line-height: 24px;
     margin-bottom: 24px;
 }
-.progresso{
+.barra_progresso{
     background: var(--button-bg);
     height: 16px;
     padding: 4px;
     padding: 4px;
     border-radius: 999px;
 }
-.progresso div{
+.barra_progresso div{
     height: 100%;
-    width: 50%;
     background: var(--purple);
     border-radius: 999px;
 }
