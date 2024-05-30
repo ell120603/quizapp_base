@@ -177,7 +177,7 @@ main{
         color: var(--white);
     }
 }
-.alternativas label#errado{
+.alternativas label#errada{
     outline: 3px solid var(--red);
     & span{
         background: var(--red);

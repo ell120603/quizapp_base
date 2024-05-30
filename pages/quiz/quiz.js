@@ -3,12 +3,12 @@ const buttonTema = document.querySelector(".tema button");
 const body = document.querySelector("body");
 const assunto = localStorage.getItem("assunto");
 
-let quiz = {};
-let pontos = 0;
-let pergunta = 1;
+let quiz = {}
+let pontos = 0
+let pergunta = 1
 let resposta = ""
 let idInputResposta = ""
-let respostaCorretaID = ""
+let respostaCorretaId = ""
 buttonTema.addEventListener("click", () => {
   trocarTema(body, buttonTema);
 });
@@ -56,36 +56,36 @@ function montarPergunta() {
         </section>
         <section class="alternativas">
             <form action="">
-                <label for="alternativa_A">
-                    <input type="radio" id="alternativa_A" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[0])}">
+                <label for="alternativa_a">
+                    <input type="radio" id="alternativa_a" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[0])}">
                     <div>
                         <span>A</span>
                         ${alterarSinais(quiz.questions[pergunta-1].options[0])}
                     </div>
                 </label>
-                <label for="alternativa_B">
-                    <input type="radio" id="alternativa_B" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[1])}">
+                <label for="alternativa_b">
+                    <input type="radio" id="alternativa_b" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[1])}">
                     <div>
                         <span>B</span>
                         ${alterarSinais(quiz.questions[pergunta-1].options[1])}
                     </div>
                 </label>
-                <label for="alternativa_C" >
-                    <input type="radio" id="alternativa_C" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[2])}">
+                <label for="alternativa_c" >
+                    <input type="radio" id="alternativa_c" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[2])}">
                     <div>
                         <span>C</span>
                         ${alterarSinais(quiz.questions[pergunta-1].options[2])}
                     </div>
                 </label>
-                <label for="alternativa_D">
-                    <input type="radio" id="alternativa_D" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[3])}">
+                <label for="alternativa_d">
+                    <input type="radio" id="alternativa_d" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[3])}">
                     <div>
                         <span>D</span>
                         ${alterarSinais(quiz.questions[pergunta-1].options[3])}
                     </div>
                 </label>
             </form>
-            <button>Enviar</button>
+            <button>Responder</button>
         </section>`
 }
 function alterarSinais(texto){
@@ -94,31 +94,54 @@ function alterarSinais(texto){
 function guardarResposta(evento){
     resposta = evento.target.value
     idInputResposta = evento.target.id
-    const buttonEnviar = document.querySelector(".alternativas button")
-    buttonEnviar.addEventListener("click",validarResposta)
+
+    const botaoEnviar = document.querySelector(".alternativas button")
+    botaoEnviar.addEventListener("click",validarResposta)
+
 }
 function validarResposta(){
+    const botaoEnviar = document.querySelector(".alternativas button")
+    botaoEnviar.innerText = "Proxima"
+    botaoEnviar.removeEventListener("click",validarResposta)
+    
+    if(pergunta === 10){
+        botaoEnviar.innerText = "Finalizar"
+        botaoEnviar.addEventListener("click",finalizar)
+    }else{
+        botaoEnviar.addEventListener("click",proximaPergunta)
+    }
+
     if(resposta === quiz.questions[pergunta-1].answer){
         document.querySelector(`label[for='${idInputResposta}']`).setAttribute("id","certo")
-        pontos = pontos+1
+        pontos = pontos + 1
     }else{
-        document.querySelector(`label[for='${idInputResposta}']`).setAttribute("id","errado")
-        document.querySelector(`label[for='${respostaCorretaID}']`).setAttribute("id","certo")
+        document.querySelector(`label[for='${idInputResposta}']`).setAttribute("id","errada")
+        document.querySelector(`label[for='${respostaCorretaId}']`).setAttribute("id","certo")
     }
+    pergunta = pergunta + 1
+}
+function finalizar(){
+    localStorage.setItem("pontos",pontos)
+    window.location.href = "../resultado/result.html"
+}
+function proximaPergunta(){
+    montarPergunta()
+    adicionarEventoInputs()
+}
+function adicionarEventoInputs(){
+    const inputRespota = document.querySelectorAll(".alternativas input")
+    inputRespota.forEach(input=>{
+        input.addEventListener("click",guardarResposta)
+        if(input.value === quiz.questions[pergunta-1].answer){
+            respostaCorretaId = input.id
+        }
+    })
 }
 async function iniciar(){
     alterarAssunto()
     await buscarPerguntas()
     montarPergunta()
-
-    const inputsResposta = document.querySelectorAll(".alternativas input")
-    inputsResposta.forEach(input=>{
-        input.addEventListener("click",guardarResposta)
-
-        if(input.value === quiz.questions[pergunta-1].answer){
-            respostaCorretaID == input.id
-        }
-    })
+    adicionarEventoInputs()
 }
 
 iniciar()
