@@ -203,6 +203,11 @@ main button:hover{
         border-radius: 24px;
         margin-bottom: 32px;
     }
+    .assunto_icone{
+        width: 56px;
+        height: 56px;
+        padding: 8px;
+    }
     main button{
         font-size: 22px;
         padding: 24px;
