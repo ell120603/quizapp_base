@@ -1,0 +1,6 @@
+ <div class="assunto">
+                <div class="assunto_icone">
+                    <img src="../../assets/img/icon-accessibility.svg" alt="icone Acessibilidade">
+                </div>
+                <h1>Acessibilidade</h1>
+            </div>
